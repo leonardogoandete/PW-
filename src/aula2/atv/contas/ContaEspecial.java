@@ -39,4 +39,12 @@ public class ContaEspecial extends Conta{
     public double debita(double valor){
         return getSaldo();
     }
+
+    @Override
+    public String toString() {
+        return "ContaEspecial{" +
+                "limite=" + limite +
+                ", cliente=" + cliente +
+                '}';
+    }
 }
