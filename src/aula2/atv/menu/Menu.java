@@ -3,7 +3,7 @@ package aula2.atv.menu;
 import aula2.atv.agencias.Agencia;
 import aula2.atv.clientes.Cliente;
 import aula2.atv.contas.ContaEspecial;
-import aula2.utils.OpcoesMenu;
+import aula2.atv.utils.OpcoesMenu;
 
 import javax.swing.*;
 import java.util.ArrayList;
