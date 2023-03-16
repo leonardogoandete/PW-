@@ -9,7 +9,7 @@ import aula2.atv.utils.ValidaCpf;
 import javax.swing.*;
 import java.util.ArrayList;
 
-public class Menu implements ValidaCpf {
+public class Menu implements ValidaCpf{
 
     public static int exibeMenu(){
         String string_menu = "";
@@ -38,14 +38,11 @@ public class Menu implements ValidaCpf {
                     ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 
                     do {
-                        String nome = JOptionPane.showInputDialog(null, "Digite o nome do cliente:");
-                        if (JOptionPane.showInputDialog(null, "Digite o CPF do cliente:"){
-
-                        }
-                        //clientes.add(new Cliente(
-                        //        JOptionPane.showInputDialog(null, "Digite o nome do cliente:"),
-                        //        JOptionPane.showInputDialog(null, "Digite o CPF do cliente:")));
-
+                        String cpf = JOptionPane.showInputDialog(null, "Digite o CPF do cliente:");
+                            while (ValidaCpf.isCpf(cpf) == false){
+                                cpf = JOptionPane.showInputDialog(null,"Digite um CPF valido:");
+                            }
+                        clientes.add(new Cliente(JOptionPane.showInputDialog(null, "Digite o nome do cliente:"),cpf));
                     } while (JOptionPane.showConfirmDialog(null, "Deseja incluir outro cliente?") == 0);
 
                     ContaEspecial novaContaEspecial = new ContaEspecial(
@@ -109,6 +106,9 @@ public class Menu implements ValidaCpf {
 
                 case 6:
                     System.exit(0);
+                    break;
+                case 7:
+                    JOptionPane.showMessageDialog(null,ValidaCpf.isCpf("18035208764"));
                     break;
             }
         }
