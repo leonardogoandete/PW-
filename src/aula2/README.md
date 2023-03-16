@@ -1,3 +1,5 @@
+# PW1
+
 1) ContaEspecial é uma Conta
 2) ContaEspecial tem vários clientes (no mínimo 1)
 3) Toda Conta tem uma agência
@@ -10,3 +12,8 @@
    6) Sair
 4) Usar uma interface com método validador para o CPF
 5) Usar enum para os itens de menu
+
+# PW1
+
+Diagrama de classes:
+![Diagrama](aula2.png)

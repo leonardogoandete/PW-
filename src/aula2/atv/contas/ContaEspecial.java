@@ -42,7 +42,7 @@ public class ContaEspecial extends Conta{
 
     @Override
     public String toString() {
-        return "ContaEspecial{" +
+        return super.toString() + "ContaEspecial{" +
                 "limite=" + limite +
                 ", cliente=" + cliente +
                 '}';
