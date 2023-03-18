@@ -16,4 +16,5 @@
 # PW1
 
 Diagrama de classes:
+
 ![Diagrama](aula2.png)
