@@ -6,7 +6,7 @@ public class Dependente extends Pessoa{
     public Dependente(){
         super();
     }
-    public Dependente(long numCartao, String nome, String endereco, String email, String grauParentesco) {
+    public Dependente(Long numCartao, String nome, String endereco, String email, String grauParentesco) {
         super(numCartao, nome, endereco, email);
         this.grauParentesco = grauParentesco;
     }
