@@ -12,4 +12,5 @@ número do telefone, sendo que cada Sócio tem apenas um telefone para ser persi
 sistema.
 
 Diagrama de classes:
-![Diagrama](aula2.png)
+
+![Diagrama](diagrama.png)
