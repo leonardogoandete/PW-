@@ -10,24 +10,24 @@ public class Pessoa {
 
     */
 
-    private long numCartao;
+    private Long numCartao;
     private String nome;
     private String endereco;
     private String email;
 
     public Pessoa(){}
-    public Pessoa(long numCartao, String nome, String endereco, String email) {
+    public Pessoa(Long numCartao, String nome, String endereco, String email) {
         this.numCartao = numCartao;
         this.nome = nome;
         this.endereco = endereco;
         this.email = email;
     }
 
-    public long getNumCartao() {
+    public Long getNumCartao() {
         return numCartao;
     }
 
-    public void setNumCartao(long numCartao) {
+    public void setNumCartao(Long numCartao) {
         this.numCartao = numCartao;
     }
 
@@ -57,11 +57,9 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        return "Pessoa{" +
-                "numCartao=" + numCartao +
-                ", nome='" + nome + '\'' +
-                ", endereco='" + endereco + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        return  "\nNome: " + getNome() +
+                "\nNumero do cartao: " + getNumCartao() +
+                "\nEndereco: " + getEndereco() +
+                "\nE-mail: " + getEmail();
     }
 }

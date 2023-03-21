@@ -2,11 +2,11 @@ package questionario1.atv.contatos;
 
 public class Telefone {
     private int ddd;
-    private long numero;
+    private Long numero;
 
     public Telefone() {}
 
-    public Telefone(int ddd, long numero) {
+    public Telefone(int ddd, Long numero) {
         this.ddd = ddd;
         this.numero = numero;
     }
@@ -19,16 +19,16 @@ public class Telefone {
         this.ddd = ddd;
     }
 
-    public long getNumero() {
+    public Long getNumero() {
         return numero;
     }
 
-    public void setNumero(long numero) {
+    public void setNumero(Long numero) {
         this.numero = numero;
     }
 
     @Override
     public String toString() {
-        return "("+ddd+")"+numero;
+        return "(" + getDdd() + ")" + getNumero().toString().substring(0,5)+"-"+ getNumero().toString().substring(5);
     }
 }

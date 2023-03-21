@@ -21,8 +21,7 @@ public class Dependente extends Pessoa{
 
     @Override
     public String toString() {
-        return "Dependente{" + "pessoa:" + super.toString() +
-                "grauParentesco='" + grauParentesco + '\'' +
-                '}';
+        return super.toString() +
+               "\nGrau de parentesco: " + getGrauParentesco();
     }
 }

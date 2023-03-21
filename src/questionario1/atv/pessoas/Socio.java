@@ -10,7 +10,7 @@ public class Socio extends Pessoa{
     public Socio() {
         super();
     }
-    public Socio(long numCartao, String nome, String endereco, String email, Telefone telefone, ArrayList<Dependente> dependentes) {
+    public Socio(Long numCartao, String nome, String endereco, String email, Telefone telefone, ArrayList<Dependente> dependentes) {
         super(numCartao, nome, endereco, email);
         this.telefone = telefone;
         this.dependentes = dependentes;
@@ -34,17 +34,27 @@ public class Socio extends Pessoa{
 
     @Override
     public String toString() {
-        String strPessoa = "";
-        String strTelefone = "";
-        String strDependentes = "";
+        StringBuffer sb = new StringBuffer();
+        int i =1;
+        sb.append(
+                "<==== Socio ====>\n"+
+                "Nome: "+ (super.getNome() == null ? "" : super.getNome()) +
+                "\nNumero do cartao: " + (super.getNumCartao() == null ? "" : super.getNumCartao()) +
+                "\nEndereco: "+ (super.getEndereco() == null ? "" : super.getEndereco()) +
+                "\nTelefone: "+ (getTelefone() == null ? "": getTelefone()) +
+                "\nE-mail: "+ (super.getEmail() == null ? "" : super.getEmail() +
+                "\nDependentes:\n"));
 
-        strPessoa += super.toString() == null ? "" : super.toString();
-        strTelefone += telefone == null ? "" : telefone.toString();
-        strDependentes += dependentes == null ? "" : dependentes.toString();
+        for (Dependente dep : dependentes) {
+            sb.append(
+                    "\tDependente "+(i++) +
+                    "\n\tNome: "+ (dep.getNome() == null ? "" : dep.getNome()) +
+                    "\n\tNumero do cartao: " + (dep.getNumCartao() == null ? "" : dep.getNumCartao()) +
+                    "\n\tEndereco: "+ (dep.getEndereco() == null ? "" : dep.getEndereco()) +
+                    "\n\tE-mail: "+ (dep.getEmail() == null ? "" : dep.getEmail()) +
+                    "\n\tGrau de parentesco: "+ (dep.getGrauParentesco() == null ? "" : dep.getGrauParentesco())+"\n");
+        }
 
-        return "Socio{" + "pessoa:" + strPessoa +
-                "telefone=" + strTelefone +
-                ", dependentes=" + strDependentes +
-                '}';
+        return sb.toString();
     }
 }
