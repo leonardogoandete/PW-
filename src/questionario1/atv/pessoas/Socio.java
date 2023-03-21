@@ -34,7 +34,7 @@ public class Socio extends Pessoa{
 
     @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         int i =1;
         sb.append(
                 "<==== Socio ====>\n"+
