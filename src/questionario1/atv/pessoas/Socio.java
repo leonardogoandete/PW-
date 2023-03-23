@@ -10,6 +10,10 @@ public class Socio extends Pessoa{
     public Socio() {
         super();
     }
+    public Socio(Long numCartao, String nome, String endereco, String email, Telefone telefone) {
+        super(numCartao, nome, endereco, email);
+        this.telefone = telefone;
+    }
     public Socio(Long numCartao, String nome, String endereco, String email, Telefone telefone, ArrayList<Dependente> dependentes) {
         super(numCartao, nome, endereco, email);
         this.telefone = telefone;
@@ -44,17 +48,19 @@ public class Socio extends Pessoa{
                 "\nTelefone: "+ (getTelefone() == null ? "": getTelefone()) +
                 "\nE-mail: "+ (super.getEmail() == null ? "" : super.getEmail() +
                 "\nDependentes:\n"));
-
-        for (Dependente dep : dependentes) {
-            sb.append(
-                    "\tDependente "+(i++) +
-                    "\n\tNome: "+ (dep.getNome() == null ? "" : dep.getNome()) +
-                    "\n\tNumero do cartao: " + (dep.getNumCartao() == null ? "" : dep.getNumCartao()) +
-                    "\n\tEndereco: "+ (dep.getEndereco() == null ? "" : dep.getEndereco()) +
-                    "\n\tE-mail: "+ (dep.getEmail() == null ? "" : dep.getEmail()) +
-                    "\n\tGrau de parentesco: "+ (dep.getGrauParentesco() == null ? "" : dep.getGrauParentesco())+"\n");
+        if (dependentes == null || dependentes.isEmpty()){
+            sb.append("");
+        }else{
+            for (Dependente dep : dependentes) {
+                sb.append(
+                        "\tDependente "+(i++) +
+                        "\n\tNome: "+ (dep.getNome() == null ? "" : dep.getNome()) +
+                        "\n\tNumero do cartao: " + (dep.getNumCartao() == null ? "" : dep.getNumCartao()) +
+                        "\n\tEndereco: "+ (dep.getEndereco() == null ? "" : dep.getEndereco()) +
+                        "\n\tE-mail: "+ (dep.getEmail() == null ? "" : dep.getEmail()) +
+                        "\n\tGrau de parentesco: "+ (dep.getGrauParentesco() == null ? "" : dep.getGrauParentesco())+"\n");
+            }
         }
-
         return sb.toString();
     }
 }
