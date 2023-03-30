@@ -1,7 +1,6 @@
 package aula5.atv.pessoas;
 
 import aula5.atv.contatos.Contato;
-import java.util.List;
 
 public class Pessoa {
     private String nome, cpf;
@@ -49,6 +48,6 @@ public class Pessoa {
     public String toString() {
         return "\nNome:"+getNome()+
                "\nCPF:"+getCpf()+
-               "\nContatos:"+getContatos();
+               "\nContato:"+getContatos();
     }
 }

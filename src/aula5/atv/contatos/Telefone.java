@@ -1,6 +1,6 @@
 package aula5.atv.contatos;
 
-public class Telefone {
+public class Telefone extends Contato{
     private int ddd;
     private Long numero;
 
