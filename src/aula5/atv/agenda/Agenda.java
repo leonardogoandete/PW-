@@ -6,5 +6,5 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Agenda implements OperacoesAgenda{
-    private List<Pessoa> pessoas = new ArrayList<>();
+    //private List<Pessoa> pessoas = new ArrayList<>();
 }
