@@ -3,19 +3,30 @@ package aula5.atv;
 import aula5.atv.agenda.Agenda;
 import aula5.atv.contatos.Telefone;
 import aula5.atv.pessoas.Pessoa;
+import aula5.atv.utils.OpcoesMenu;
+import javax.swing.*;
+
 
 public class MenuAgenda {
     public static void main(String[] args) {
-        Agenda ag = new Agenda();
-
-        Pessoa p1 = new Pessoa("Leo","12345", new Telefone(51,12345L));
-        Pessoa p2 = new Pessoa("Lari","5687", new Telefone(51,34783L));
-        Pessoa p3 = new Pessoa("Bidu", "2524646", new Telefone(13,3435L));
-        ag.cadastrar(p1);
-        ag.cadastrar(null);
+        //exibeMenu();
+        while (true) {
+            switch (exibeMenu()) {
 
 
-        System.out.println(ag.listarTodos());
+            }
+        }
+
+        //Agenda ag = new Agenda();
+
+        //Pessoa p1 = new Pessoa("Leo","12345", new Telefone(51,12345L));
+        //Pessoa p2 = new Pessoa("Lari","5687", new Telefone(51,34783L));
+        //Pessoa p3 = new Pessoa("Bidu", "2524646", new Telefone(13,3435L));
+        //ag.cadastrar(p1);
+        //ag.cadastrar(null);
+
+
+        //System.out.println(ag.listarTodos());
         /*
         System.out.println("Total: "+ag.totalizar());
         ag.remover(p1);
@@ -25,6 +36,12 @@ public class MenuAgenda {
         */
         //ag.pesquisar(null);
 
+    }
 
+    public static int exibeMenu() {
+        String string_menu = "";
+        for (OpcoesMenu opcaoMenu : OpcoesMenu.values())
+            string_menu += opcaoMenu.toString();
+        return Integer.parseInt(JOptionPane.showInputDialog(null, string_menu));
     }
 }
