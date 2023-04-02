@@ -2,7 +2,9 @@ package aula5.atv.pessoas;
 
 import aula5.atv.contatos.Contato;
 
-public class Pessoa {
+import java.util.Comparator;
+
+public class Pessoa implements Comparable<Pessoa> {
     private String nome, cpf;
     private Contato contato;
 
@@ -46,8 +48,21 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        return "\nNome:"+getNome()+
-               "\nCPF:"+getCpf()+
-               "\nContato:"+getContatos();
+        return "\n\tNome:"+getNome()+
+               "\n\tCPF:"+getCpf()+
+               "\n\tContato:"+getContatos()+"\n";
     }
+
+    @Override
+    public int compareTo(Pessoa outraPessoa){
+        return this.nome.compareTo(outraPessoa.nome);
+    }
+    /*
+    @Override
+    public int compare(Pessoa p, Pessoa outraPessoa) {
+        return p.getNome().
+                compareTo(outraPessoa.getNome());
+    }
+
+     */
 }

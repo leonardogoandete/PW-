@@ -1,13 +1,11 @@
 package aula5.atv.agenda;
 
-import java.util.Collection;
+import java.util.List;
 
-public interface OperacoesAgenda{
-
-    boolean cadastrar(Object obj);
-    Collection<Object> listarTodos();
+public interface OperacoesAgenda<T>{
+    boolean cadastrar(T obj);
+    List<T> listarTodos();
     int totalizar();
-    boolean pesquisar(Object obj);
-    boolean remover(Object obj);
-
+    boolean pesquisar(T t);
+    boolean remover(T t);
 }
