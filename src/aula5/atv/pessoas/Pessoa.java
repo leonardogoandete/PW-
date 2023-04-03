@@ -2,13 +2,12 @@ package aula5.atv.pessoas;
 
 import aula5.atv.contatos.Contato;
 
-import java.util.Comparator;
-
 public class Pessoa implements Comparable<Pessoa> {
     private String nome, cpf;
     private Contato contato;
 
-    public Pessoa() {}
+    public Pessoa() {
+    }
 
     public Pessoa(String nome, String cpf, Contato contato) {
         this.nome = nome;

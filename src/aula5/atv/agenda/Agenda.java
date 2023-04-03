@@ -1,13 +1,12 @@
 package aula5.atv.agenda;
 
+import aula5.atv.pessoas.Pessoa;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.Comparator;
+import java.util.TreeSet;
 
 public class Agenda implements OperacoesAgenda{
-    private List<Object> listaPessoas = new ArrayList<>();
-
+    private TreeSet<Object> listaPessoas = new TreeSet<>();
 
     @Override
     public boolean cadastrar(Object o) {
@@ -18,8 +17,22 @@ public class Agenda implements OperacoesAgenda{
     }
 
     @Override
-    public List<Object> listarTodos() {
-        return listaPessoas != null ? listaPessoas : new ArrayList<>();
+    public TreeSet<Pessoa> listarTodos() {
+        TreeSet<Pessoa> conjuntoPessoas = new TreeSet<>(new Comparator<Pessoa>() {
+            @Override
+            public int compare(Pessoa pessoa1, Pessoa pessoa2) {
+                return pessoa1.getNome().compareToIgnoreCase(pessoa2.getNome());
+            }
+        });
+        for (Object item : listaPessoas) {
+            try {
+                Pessoa pessoa = (Pessoa) item;
+                conjuntoPessoas.add(pessoa);
+            } catch (ClassCastException e) {
+                // Se o item não pode ser convertido para Pessoa, passa para o próximo item
+            }
+        }
+        return conjuntoPessoas;
     }
 
     @Override
@@ -31,21 +44,21 @@ public class Agenda implements OperacoesAgenda{
         }
     }
 
-    @Override
-    public boolean pesquisar(Object o) {
-        if (listaPessoas.isEmpty()) {
-            return false;
-        }
-        if (o == null) {
-            throw new IllegalArgumentException("O objeto de pesquisa nao pode ser nulo.");
-        }
-        for (Object item : listaPessoas) {
-            if (item == o) {
-                return true;
-            }
-        }
-        return false;
-    }
+   @Override
+   public boolean pesquisar(Object o) {
+       if (listaPessoas.isEmpty()) {
+           return false;
+       }
+       if (o == null) {
+           throw new IllegalArgumentException("O objeto de pesquisa nao pode ser nulo.");
+       }
+       for (Object item : listaPessoas) {
+           if (item == o) {
+               return true;
+           }
+       }
+       return false;
+   }
 
     @Override
     public boolean remover(Object o) {

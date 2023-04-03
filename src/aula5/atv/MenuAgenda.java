@@ -9,39 +9,45 @@ import javax.swing.*;
 
 public class MenuAgenda {
     public static void main(String[] args) {
-        //exibeMenu();
+        Agenda agenda = new Agenda();
+
         while (true) {
             switch (exibeMenu()) {
-
-
+                case 1:
+                    agenda.cadastrar(new Pessoa(
+                            JOptionPane.showInputDialog(null,"Digite o nome"),
+                            JOptionPane.showInputDialog(null,"Digite o CPF:"),
+                            new Telefone(
+                                    Integer.parseInt(JOptionPane.showInputDialog(null,"Digite o DDD")),
+                                    Long.parseLong(JOptionPane.showInputDialog(null,"Digite o numero:")))
+                            ));
+                    break;
+                case 2:
+                    JOptionPane.showMessageDialog(null,agenda.listarTodos());
+                    break;
+                case 3:
+                    JOptionPane.showMessageDialog(null,agenda.totalizar());
+                    break;
+                case 4:
+                    //implementar
+                    break;
+                case 5:
+                    JOptionPane.showMessageDialog(null,"Saindo...");
+                    System.exit(0);
+                    break;
+                case 6:
+                    System.out.println(agenda.listarTodos());
+                default:
+                    JOptionPane.showMessageDialog(null,"Opção inválida!");
+                    break;
             }
         }
-
-        //Agenda ag = new Agenda();
-
-        //Pessoa p1 = new Pessoa("Leo","12345", new Telefone(51,12345L));
-        //Pessoa p2 = new Pessoa("Lari","5687", new Telefone(51,34783L));
-        //Pessoa p3 = new Pessoa("Bidu", "2524646", new Telefone(13,3435L));
-        //ag.cadastrar(p1);
-        //ag.cadastrar(null);
-
-
-        //System.out.println(ag.listarTodos());
-        /*
-        System.out.println("Total: "+ag.totalizar());
-        ag.remover(p1);
-        System.out.println("after remove:\n"+ ag.listarTodos());
-        System.out.println("Total: "+ag.totalizar());
-        System.out.println("Procurando nome:"+ ag.pesquisar(p2));
-        */
-        //ag.pesquisar(null);
-
     }
 
     public static int exibeMenu() {
-        String string_menu = "";
+        StringBuilder stringMenu = new StringBuilder();
         for (OpcoesMenu opcaoMenu : OpcoesMenu.values())
-            string_menu += opcaoMenu.toString();
-        return Integer.parseInt(JOptionPane.showInputDialog(null, string_menu));
+            stringMenu.append(opcaoMenu.toString());
+        return Integer.parseInt(JOptionPane.showInputDialog(null, stringMenu.toString()));
     }
 }
