@@ -2,10 +2,10 @@ package aula5.atv.agenda;
 
 import java.util.TreeSet;
 
-public interface OperacoesAgenda<T>{
-    boolean cadastrar(T obj);
-    TreeSet<T> listarTodos();
+public interface OperacoesAgenda<E>{
+    boolean cadastrar(E e);
+    TreeSet<E> listarTodos();
     int totalizar();
-    boolean pesquisar(T t);
-    boolean remover(T t);
+    boolean pesquisar(E e);
+    boolean remover(E e);
 }
