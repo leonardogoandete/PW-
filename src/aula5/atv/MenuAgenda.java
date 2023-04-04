@@ -37,6 +37,7 @@ public class MenuAgenda {
                     break;
                 case 6:
                     System.out.println(agenda.listarTodos());
+                    break;
                 default:
                     JOptionPane.showMessageDialog(null,"Opção inválida!");
                     break;
