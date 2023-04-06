@@ -6,7 +6,11 @@ import java.util.Comparator;
 import java.util.TreeSet;
 
 public class Agenda implements OperacoesAgenda{
-    private TreeSet<Object> listaPessoas = new TreeSet<>();
+    private List<Pessoa> pessoas;
+
+    public Agenda(){
+        pessoas = new ArrayList<>();
+    }
 
     @Override
     public boolean cadastrar(Object o) {
@@ -37,15 +41,12 @@ public class Agenda implements OperacoesAgenda{
 
     @Override
     public int totalizar() {
-        if (listaPessoas.isEmpty()) {
-            return 0;
-        } else {
-            return listaPessoas.size();
-        }
+        if (listaPessoas == null) return 0; 
+        else return listaPessoas.size();
     }
 
    @Override
-   public boolean pesquisar(Object o) {
+   public boolean pesquisar(Object o) { 
        if (listaPessoas.isEmpty()) {
            return false;
        }
@@ -59,6 +60,12 @@ public class Agenda implements OperacoesAgenda{
        }
        return false;
    }
+   /* Outro tipo de implementacao
+    public boolean pesquisar(String nome) {
+        Pessoa p = new Pessoa();
+        p.setNome();
+        return agenda.contains(p);
+   */
 
     @Override
     public boolean remover(Object o) {
@@ -73,5 +80,9 @@ public class Agenda implements OperacoesAgenda{
             return true;
         }
         return false;
+    }
+
+    public void ordenar() {
+        Collections.sort(pessoas);
     }
 }
