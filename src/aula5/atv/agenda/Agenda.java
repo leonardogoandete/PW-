@@ -2,76 +2,61 @@ package aula5.atv.agenda;
 
 import aula5.atv.pessoas.Pessoa;
 
-import java.util.Comparator;
-import java.util.TreeSet;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-public class Agenda implements OperacoesAgenda{
-    private TreeSet<Object> listaPessoas = new TreeSet<>();
+public class Agenda implements OperacoesAgenda<Pessoa>{
+    private List<Pessoa> listaPessoas;
 
-    @Override
-    public boolean cadastrar(Object o) {
-        if (o == null) {
-            throw new IllegalArgumentException("O objeto de inserção não pode ser nulo.");
-        }
-        return listaPessoas.add(o);
+    public Agenda(){
+        listaPessoas = new ArrayList<>();
     }
 
     @Override
-    public TreeSet<Pessoa> listarTodos() {
-        TreeSet<Pessoa> conjuntoPessoas = new TreeSet<>(new Comparator<Pessoa>() {
-            @Override
-            public int compare(Pessoa pessoa1, Pessoa pessoa2) {
-                return pessoa1.getNome().compareToIgnoreCase(pessoa2.getNome());
-            }
-        });
-        for (Object item : listaPessoas) {
-            try {
-                Pessoa pessoa = (Pessoa) item;
-                conjuntoPessoas.add(pessoa);
-            } catch (ClassCastException e) {
-                // Se o item não pode ser convertido para Pessoa, passa para o próximo item
-            }
+
+    public boolean cadastrar(Pessoa obj) {
+        if (obj == null) {
+            throw new IllegalArgumentException("O objeto de inserção não pode ser nulo.");
         }
-        return conjuntoPessoas;
+        return listaPessoas.add(obj);
+    }
+
+    @Override
+    public List<Pessoa> listarTodos() {
+        return listaPessoas;
     }
 
     @Override
     public int totalizar() {
-        if (listaPessoas.isEmpty()) {
-            return 0;
-        } else {
-            return listaPessoas.size();
+        if (listaPessoas == null) {
+            throw new IllegalArgumentException("Erro ao contabilizar o total de pessoas.");
         }
+        return listaPessoas.size();
     }
 
    @Override
-   public boolean pesquisar(Object o) {
-       if (listaPessoas.isEmpty()) {
-           return false;
-       }
-       if (o == null) {
-           throw new IllegalArgumentException("O objeto de pesquisa nao pode ser nulo.");
-       }
-       for (Object item : listaPessoas) {
-           if (item == o) {
-               return true;
-           }
-       }
-       return false;
+   public boolean pesquisar(Pessoa obj) {
+       return listaPessoas.contains(obj);
    }
-
     @Override
-    public boolean remover(Object o) {
-        if (listaPessoas.isEmpty()) {
-            return false;
-        }
-        if (o == null) {
+    public boolean remover(Pessoa obj) {
+        if (obj == null) {
             throw new IllegalArgumentException("O objeto a ser removido nao pode ser nulo.");
         }
-        if (listaPessoas.contains(o)) {
-            listaPessoas.remove(o);
-            return true;
+        return listaPessoas.remove(obj);
+    }
+
+    public String toString() {
+        String aux ="";
+        for (Pessoa pessoa : listaPessoas) {
+            if(pessoa != null)
+                aux+= pessoa.toString();
         }
-        return false;
+        return aux;
+    }
+
+    public void ordenar() {
+        Collections.sort(listaPessoas);
     }
 }

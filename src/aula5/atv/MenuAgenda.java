@@ -23,20 +23,29 @@ public class MenuAgenda {
                             ));
                     break;
                 case 2:
-                    JOptionPane.showMessageDialog(null,agenda.listarTodos());
+                    agenda.ordenar();
+                    JOptionPane.showMessageDialog(null,agenda.toString());
                     break;
                 case 3:
-                    JOptionPane.showMessageDialog(null,agenda.totalizar());
+                    //JOptionPane.showMessageDialog(null,agenda.totalizar());
+                    if (agenda.totalizar() > 0) {
+                        JOptionPane.showMessageDialog(null,"Total de contatos:" + agenda.totalizar());
+                        JOptionPane.showMessageDialog(null, "Agenda não está vazia");
+                    }else
+                        JOptionPane.showMessageDialog(null, "Agenda está vazia");
                     break;
                 case 4:
-                    //implementar
+                    String nomePesq = JOptionPane.showInputDialog("informe o nome:");
+                    Pessoa p = new Pessoa();
+                    p.setNome(nomePesq);
+                    if (agenda.pesquisar(p))
+                        JOptionPane.showMessageDialog(null, "Pessoa encontrada!");
+                    else
+                        JOptionPane.showMessageDialog(null, "Pessoa não está na agenda");
                     break;
                 case 5:
                     JOptionPane.showMessageDialog(null,"Saindo...");
                     System.exit(0);
-                    break;
-                case 6:
-                    System.out.println(agenda.listarTodos());
                     break;
                 default:
                     JOptionPane.showMessageDialog(null,"Opção inválida!");
