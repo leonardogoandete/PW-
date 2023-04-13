@@ -53,29 +53,8 @@ public class Pessoa implements Comparable<Pessoa> {
     }
 
     @Override
-    public int hashCode(){
-        return Objects.hash(nome);
-    }
-
-    @Override
-    public boolean equals(Object obj){
-        if (this == obj) return true;
-        if (obj == null) return false;
-        if (getClass() != obj.getClass()) return false;
-        Pessoa other = (Pessoa) obj;
-        return Objects.equals(nome, other.nome);
-    }
-
-    @Override
     public int compareTo(Pessoa outraPessoa){
         return this.nome.compareTo(outraPessoa.nome);
     }
-    /*
-    @Override
-    public int compare(Pessoa p, Pessoa outraPessoa) {
-        return p.getNome().
-                compareTo(outraPessoa.getNome());
-    }
 
-     */
 }
