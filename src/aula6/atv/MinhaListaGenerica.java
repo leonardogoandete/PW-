@@ -3,27 +3,27 @@ package aula6.atv;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
 
-public class MinhaListaGenerica implements ListaGen{
-    LinkedList<Object> minhaLista;
-
-    public MinhaListaGenerica(){
-        minhaLista = new LinkedList<>();
-    }
+public class MinhaListaGenerica<E> implements ListaGen<E>{
+    LinkedList<Object> minhaLista = new LinkedList<>();
 
     @Override
-    public void adicionar(Object obj) {
+    public void adicionar(E obj) {
         minhaLista.add(obj);
     }
 
     @Override
     public Object remover() {
-        minhaLista.remove();
-        return null;
+        return minhaLista.removeFirst();
+        
     }
 
     @Override
     public String listar() {
-        return minhaLista.toString();
+        String aux = "";
+        for(E obj : minhaLista){
+            aux += minhaLista.toString()+"\n";
+        }
+        return aux;
     }
 
     @Override
@@ -37,29 +37,28 @@ public class MinhaListaGenerica implements ListaGen{
     }
 
     @Override
-    public boolean contemElemento(Object obj) {
+    public boolean contemElemento(E obj) {
         return minhaLista.contains(obj);
     }
 
     @Override
-    public Object pegarElemento(int i) {
+    public E pegarElemento(int i) {
         try{
-            return (Object) minhaLista.get(i);
+            return minhaLista.get(i);
         }catch (IndexOutOfBoundsException e){
             System.out.println("Indice maior que o tamanho da lista!");
-            return null;
         }
+        return null;
     }
 
     @Override
-    public Object pegarPrimeiroElemento() throws NoSuchElementException {
+    public E pegarPrimeiroElemento() throws NoSuchElementException {
         return minhaLista.getFirst();
     }
 
     @Override
-    public Object pegarUltimoElemento() {
-        if(minhaLista.isEmpty()) throw new NoSuchElementException("Não há elementos na lista!");
-        return minhaLista.getLast();
+    public E pegarUltimoElemento() {
+        throw new NoSuchElementException("Não há elementos na lista!");
     }
 
     @Override
