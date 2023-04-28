@@ -8,9 +8,9 @@ import java.sql.SQLTimeoutException;
 public class ConnectionFactory {
 
     public Connection createConnection(){
-        String uri = "jdbc:mysql://localhost:1111/database";
-        String usuario = "root";
-        String senha = "";
+        String uri = "jdbc:mysql://localhost:3306/db";
+        String usuario = "user";
+        String senha = "password";
         Connection conexao = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
