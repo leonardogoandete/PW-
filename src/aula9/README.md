@@ -23,7 +23,7 @@
 
 6) Crie as classes POJO Carro e Placa conforme apresenta a figura abaixo:
 
-<img alt="Class Diagram" height="200" src="http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/leonardogoandete/PW1/java_interface/src/aula9/uml/carro_placa.puml" width="500"/>
+<img alt="Class Diagram" height="700" src="http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/leonardogoandete/PW1/java_interface/src/aula9/uml/carro_placa.puml" width="400"/>
 
 7) Agora, crie as classes DAO correspondentes, bem como as enumerações para os SQLs das duas
    classes. Nessas classes crie os métodos insert, listAll, delete, update e findById.
