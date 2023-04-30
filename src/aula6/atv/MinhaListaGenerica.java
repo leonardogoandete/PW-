@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.NoSuchElementException;
 
 public class MinhaListaGenerica<E> implements ListaGen<E>{
-    LinkedList<Object> minhaLista = new LinkedList<>();
+    LinkedList<E> minhaLista = new LinkedList<>();
 
     @Override
     public void adicionar(E obj) {
@@ -12,15 +12,15 @@ public class MinhaListaGenerica<E> implements ListaGen<E>{
     }
 
     @Override
-    public Object remover() {
-        return minhaLista.removeFirst();
+    public E remover() {
+        return (E) minhaLista.removeFirst();
         
     }
 
     @Override
     public String listar() {
         String aux = "";
-        for(E obj : minhaLista){
+        for(Object obj : minhaLista){
             aux += minhaLista.toString()+"\n";
         }
         return aux;
