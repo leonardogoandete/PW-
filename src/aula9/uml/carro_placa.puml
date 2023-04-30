@@ -25,7 +25,7 @@ class Placa{
     + setLetras(String letras)
     + getLetras() : String
     + setNumeros(int numeros)
-    + getNumeros : int
+    + getNumeros() : int
     + toString() : String
 }
 @enduml
