@@ -1,0 +1,17 @@
+@startuml
+class Endereco {
+    - logradouro : String
+    - complemento : String
+    - uf : String
+
+    + Endereco()
+    + Endereco(String logradouro, String complemento, String uf)
+    +  setLogradouro(String logradouro)
+    +  getLogradouro() : String
+    +  setComplemento(String complemento)
+    +  getComplemento() : String
+    +  setUf(String uf)
+    +  getUf() : String
+    +  toString() : String
+}
+@enduml
