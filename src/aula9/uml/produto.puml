@@ -1,0 +1,17 @@
+@startuml
+class Produto {
+    - codigo : int
+    - descricao : String
+    - valor : double
+
+    + Produto()
+    + Produto(int codigo, String descricao, double valor)
+    +  setcodigo(int codigo)
+    +  getcodigo() : int
+    +  setdescricao(String descricao)
+    +  getdescricao() : String
+    +  setvalor(double valor)
+    +  getvalor() : double
+    +  toString() : String
+}
+@enduml

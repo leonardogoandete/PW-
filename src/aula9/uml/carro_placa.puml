@@ -1,0 +1,31 @@
+@startuml
+
+class Carro {
+    - ano : int
+    - modelo : String
+    - montadora : double
+
+    + Carro()
+    + Carro(int ano, String modelo, String montadora)
+    + setano(int ano)
+    + getano() : int
+    + setmodelo(String modelo)
+    + getmodelo() : String
+    + setmontadora(String montadora)
+    + getmontadora() : String
+    + toString() : String
+}
+
+class Placa{
+    - letras : String
+    - numeros : int
+
+    + Placa()
+    + Placa(String letras, int numeros)
+    + setLetras(String letras)
+    + getLetras() : String
+    + setNumeros(int numeros)
+    + getNumeros : int
+    + toString() : String
+}
+@enduml
