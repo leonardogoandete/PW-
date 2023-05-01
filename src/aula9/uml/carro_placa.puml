@@ -3,16 +3,16 @@ Carro *-- Placa
 class Carro {
     - ano : int
     - modelo : String
-    - montadora : double
+    - montadora : String
 
     + Carro()
     + Carro(int ano, String modelo, String montadora)
-    + setano(int ano)
-    + getano() : int
-    + setmodelo(String modelo)
-    + getmodelo() : String
-    + setmontadora(String montadora)
-    + getmontadora() : String
+    + setAno(int ano)
+    + getAno() : int
+    + setModelo(String modelo)
+    + getModelo() : String
+    + setMontadora(String montadora)
+    + getMontadora() : String
     + toString() : String
 }
 

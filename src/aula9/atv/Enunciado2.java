@@ -20,7 +20,7 @@ public class Enunciado2 {
                     JOptionPane.showInputDialog(null, "Digite o estado: Ex.: SP"));
             // inserção no banco
             try (Connection conexao = new ConnectionFactory().getConnection();
-                 PreparedStatement stmt = conexao.prepareStatement(sqlInsert);) {
+                 PreparedStatement stmt = conexao.prepareStatement(sqlInsert)) {
 
                 //for (Endereco endereco: enderecos){
                 stmt.setString(1, endereco.getLogradouro());

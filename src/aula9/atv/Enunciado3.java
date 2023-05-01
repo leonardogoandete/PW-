@@ -44,7 +44,8 @@ public class Enunciado3 {
              ResultSet rs = stmt.executeQuery(sqlLoad)) {
 
             while (rs.next()) {
-                sb.append(rs.getInt("id"))
+                sb.append("ID:")
+                        .append(rs.getInt("id"))
                         .append("| ")
                         .append(new Endereco(rs.getString("logradouro"), rs.getString("complemento"), rs.getString("uf")))
                         .append("\n");

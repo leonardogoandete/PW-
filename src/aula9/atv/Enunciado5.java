@@ -6,7 +6,7 @@ import aula9.model.Produto;
 import javax.swing.*;
 import java.sql.*;
 
-public class Enunciado4 {
+public class Enunciado5 {
     public static void insereProdutos() {
         //List<Produto> produtos = new ArrayList<>();
         String sql = "INSERT INTO produto (codigo, descricao, valor) VALUES (?,?,?)";
@@ -21,7 +21,7 @@ public class Enunciado4 {
         for (int i = 0; i <= 4; i++) {
             Produto produto = null;
             try{
-                 produto = new Produto(
+                produto = new Produto(
                         Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o codigo para o produto:")),
                         JOptionPane.showInputDialog(null, "Digite uma descricao:"),
                         Double.parseDouble(JOptionPane.showInputDialog(null, "Digite o valor:"))
@@ -55,11 +55,13 @@ public class Enunciado4 {
         String sqlLoad = "select * from produto";
 
         try (Connection conexao = new ConnectionFactory().getConnection();
-             Statement stmt = conexao.prepareStatement(sqlLoad);
+             Statement stmt = conexao.prepareStatement(sqlLoad, Statement.RETURN_GENERATED_KEYS);
              ResultSet rs = stmt.executeQuery(sqlLoad)) {
 
             while (rs.next()) {
-                sb.append(new Produto(rs.getInt("codigo"), rs.getString("descricao"), rs.getDouble("valor")))
+                sb.append(rs.getInt("id"))
+                        .append("| ")
+                        .append(new Produto(rs.getInt("codigo"), rs.getString("descricao"), rs.getDouble("valor")))
                         .append("\n");
             }
 
