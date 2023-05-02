@@ -1,0 +1,5 @@
+CREATE TABLE Placa (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    letras VARCHAR(3),
+    numeros VARCHAR(4)
+);

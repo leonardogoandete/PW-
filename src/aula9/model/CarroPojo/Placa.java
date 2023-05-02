@@ -1,6 +1,8 @@
 package aula9.model.CarroPojo;
 
-import aula9.carroDao.PlacaDAO;
+import aula9.model.carroDao.PlacaDAO;
+
+import java.util.List;
 
 public class Placa {
     private int idPlaca;
@@ -54,5 +56,9 @@ public class Placa {
 
     public Placa findById(int id){
         return new PlacaDAO().findByID(id);
+    }
+
+    public List<Placa> listAll(){
+        return new PlacaDAO().listAll();
     }
 }

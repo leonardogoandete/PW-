@@ -1,4 +1,4 @@
-package aula9.carroDao;
+package aula9.model.carroDao;
 
 import aula9.config.ConnectionFactory;
 import aula9.model.CarroPojo.Carro;
@@ -37,7 +37,14 @@ public class CarroDAO implements GenericDAO<Carro> {
 
     @Override
     public int delete(Carro carro) {
-        return 0;
+        try (Connection connection = new ConnectionFactory().getConnection();
+             PreparedStatement stmt = connection.prepareStatement(sqlCarro.DELETE.getQuery())) {
+            //stmt.setInt();
+
+        }catch (SQLException ex){
+            System.out.println("Erro ao deletar carro!\n"+ex.getMessage());
+        }
+        return -1;
     }
 
     @Override
@@ -65,12 +72,11 @@ public class CarroDAO implements GenericDAO<Carro> {
 
     @Override
     public Carro findByID(int id) {
-        String sql = sqlCarro.FINDBYID.getQuery() + id;
         try (Connection connection = new ConnectionFactory().getConnection();
-             PreparedStatement stmt = connection.prepareStatement(sql)) {
+             PreparedStatement stmt = connection.prepareStatement(sqlCarro.FINDBYID.getQuery())) {
+            stmt.setInt(1,id);
             ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()) {
+            while(rs.next()) {
                 return new Carro(
                         rs.getInt("ano"),
                         rs.getString("modelo"),
@@ -78,7 +84,7 @@ public class CarroDAO implements GenericDAO<Carro> {
                         new Placa(rs.getString("letras"),
                                   rs.getInt("numeros"))
                 );
-            }
+           }
         } catch (SQLException ex) {
             System.out.println("Erro na consulta!\n" + ex.getMessage());
         }

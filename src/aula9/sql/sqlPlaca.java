@@ -1,11 +1,11 @@
 package aula9.sql;
 
 public enum sqlPlaca {
-    INSERT("INSERT INTO placa(letras, numeros) VALUES (?, ?)"),
-    LISTALL("SELECT * FROM placa"),
-    DELETE("DELETE FROM placa WHERE placa=XYZ-1997"),
-    UPDATE("UPDATE placa SET numeros = 1234 WHERE numeros= 1997"),
-    FINDBYID("SELECT * FROM placa WHERE id =");
+    INSERT("INSERT INTO Placa(letras, numeros) VALUES (?, ?)"),
+    LISTALL("SELECT * FROM Placa"),
+    DELETE("DELETE FROM Placa WHERE id= ?"),
+    UPDATE("UPDATE Placa SET numeros = 1234 WHERE numeros= 1997"),
+    FINDBYID("SELECT * FROM Placa WHERE id = ?");
 
     private final String query;
 
