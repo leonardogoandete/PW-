@@ -5,6 +5,7 @@ import aula9.carroDao.CarroDAO;
 import java.util.List;
 
 public class Carro {
+    private int idCarro;
     private int ano;
     private String modelo, montadora;
     private Placa placa;
@@ -57,5 +58,13 @@ public class Carro {
 
     public List<Carro> listAll(){
         return new CarroDAO().listAll();
+    }
+
+    public void insert(Carro carro){
+        new CarroDAO().insert(carro);
+    }
+
+    public Carro findById(int id){
+        return new CarroDAO().findByID(id);
     }
 }
