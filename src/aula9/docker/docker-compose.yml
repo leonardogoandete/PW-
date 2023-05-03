@@ -12,14 +12,12 @@ services:
       MYSQL_USER: leo
       #Senha da base
       MYSQL_PASSWORD: leo
-    ports:
-      - 3306:3306  
+      #expose: 3306
+    network_mode: host
   # gerenciador de base de dados
   adminer:
     image: adminer
-    ports:
-      - 8081:8080
-  phpmyadmin:
-    image: phpmyadmin
-    ports:
-      - 8080:80
+    environment:
+      ADMINER_DESIGN: nette
+      #ADMINER_DEFAULT_SERVER: ip-banco
+    network_mode: host
