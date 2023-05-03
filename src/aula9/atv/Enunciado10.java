@@ -11,7 +11,12 @@ public class Enunciado10 {
         //System.out.println(placa.findById(4));
         //Placa pl = new Placa("NFC",3762);
         //System.out.println("==="+ pl.findById(9));
+        Carro c1 = new Carro();
+        Placa pl = new Placa();
 
+        //c1.setMontadora("teste");
+        c1.setModelo("FusCa");
+        pl.setLetras("que");
         //System.out.println(SQLs.DELETE.getQuery()+"aaa");
         //System.out.println(carro.listAll());
         //System.out.println(carro.findById(1));
@@ -21,6 +26,12 @@ public class Enunciado10 {
         //System.out.println(carro.listAll());
         //System.out.println(carro.listAll());
         //System.out.println(carro.findById(2));
-        System.out.println(placa.findById(1));
+        //UPDATE Carro SET montadora = VW WHERE modelo= Santana
+        //System.out.println(carro.update(c1));
+        //System.out.println(placa.update(pl));
+        //System.out.println(carro.delete(c1));
+        //System.out.println(placa.delete(pl));
+
+
     }
 }

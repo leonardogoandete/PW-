@@ -61,4 +61,12 @@ public class Placa {
     public List<Placa> listAll(){
         return new PlacaDAO().listAll();
     }
+
+    public int update(Placa placa){
+        return new PlacaDAO().update(placa);
+    }
+
+    public int delete(Placa placa){
+        return new PlacaDAO().delete(placa);
+    }
 }

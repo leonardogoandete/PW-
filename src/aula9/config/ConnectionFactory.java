@@ -12,7 +12,8 @@ public class ConnectionFactory {
         String usuario = "leo";
         String senha = "leo";
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            //Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             return DriverManager.getConnection(uri, usuario, senha);
         } catch (SQLTimeoutException ex) {
             System.out.println("Tempo esgotado!\n" + ex.getMessage());

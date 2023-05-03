@@ -18,28 +18,38 @@ public class CarroDAO implements GenericDAO<Carro> {
         try (Connection connection = new ConnectionFactory().getConnection();
              PreparedStatement stmt = connection.prepareStatement(sqlCarro.INSERT.getQuery(), Statement.RETURN_GENERATED_KEYS)) {
             stmt.setInt(1,carro.getAno());
-            stmt.setString(2,carro.getModelo());
-            stmt.setString(3, carro.getMontadora());
+            stmt.setString(2,carro.getModelo().toLowerCase());
+            stmt.setString(3, carro.getMontadora().toLowerCase());
             stmt.setInt(4,idPlaca);
             stmt.execute();
             ResultSet chaves = stmt.getGeneratedKeys();
             if (chaves.next()) chavePrimaria= chaves.getInt(1);
         } catch (SQLException ex) {
-            System.out.println("Erro no cadastro de carro!\n" + ex.getMessage() +"\n"+ ex.getSQLState());
+            System.out.println("Erro ao inserir carro!\n" + ex.getMessage() +"\n"+ ex.getSQLState());
         }
         return -1;
     }
 
     @Override
     public int update(Carro carro) {
-        return 0;
+        try (Connection connection = new ConnectionFactory().getConnection();
+             PreparedStatement stmt = connection.prepareStatement(sqlCarro.UPDATE.getQuery())) {
+            stmt.setString(1,carro.getMontadora().toLowerCase());
+            stmt.setString(2,carro.getModelo().toLowerCase());
+            return stmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.out.println("Erro ao atualizar carro!\n" + ex.getMessage());
+        }
+        return -1;
     }
 
     @Override
     public int delete(Carro carro) {
         try (Connection connection = new ConnectionFactory().getConnection();
              PreparedStatement stmt = connection.prepareStatement(sqlCarro.DELETE.getQuery())) {
-            //stmt.setInt();
+                stmt.setString(1,carro.getModelo().toLowerCase());
+            return stmt.executeUpdate();
 
         }catch (SQLException ex){
             System.out.println("Erro ao deletar carro!\n"+ex.getMessage());
@@ -65,7 +75,7 @@ public class CarroDAO implements GenericDAO<Carro> {
             }
             return lista;
         } catch (SQLException ex) {
-            System.out.println("Erro na consulta!\n" + ex.getMessage());
+            System.out.println("Erro ao listar todos os carros!\n" + ex.getMessage());
         }
         return null;
     }
@@ -86,7 +96,7 @@ public class CarroDAO implements GenericDAO<Carro> {
                 );
            }
         } catch (SQLException ex) {
-            System.out.println("Erro na consulta!\n" + ex.getMessage());
+            System.out.println("Erro ao buscar carro por ID!\n" + ex.getMessage());
         }
         return null;
     }

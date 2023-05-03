@@ -14,26 +14,41 @@ public class PlacaDAO implements GenericDAO<Placa> {
         int chavePrimaria = -1;
         try (Connection connection = new ConnectionFactory().getConnection();
              PreparedStatement stmt = connection.prepareStatement(sqlPlaca.INSERT.getQuery(), Statement.RETURN_GENERATED_KEYS)) {
-            stmt.setString(1, placa.getLetras());
+            stmt.setString(1, placa.getLetras().toUpperCase());
             stmt.setInt(2, placa.getNumeros());
             stmt.execute();
             ResultSet rs = stmt.getGeneratedKeys();
             ResultSet chaves = stmt.getGeneratedKeys();
             if (chaves.next()) chavePrimaria = chaves.getInt(1);
         } catch (SQLException ex) {
-            System.out.println("Erro na inserção de placas!\n" + ex.getMessage());
+            System.out.println("Erro na inserção de placa!\n" + ex.getMessage());
         }
         return chavePrimaria;
     }
 
     @Override
     public int update(Placa placa) {
-
-        return 0;
+        try (Connection connection = new ConnectionFactory().getConnection();
+             PreparedStatement stmt = connection.prepareStatement(sqlPlaca.UPDATE.getQuery())) {
+            stmt.setInt(1, placa.getNumeros());
+            stmt.setString(2, placa.getLetras().toUpperCase());
+            return stmt.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println("Erro ao atualizar placa!\n" + ex.getMessage());
+        }
+        return -1;
     }
 
     @Override
     public int delete(Placa placa) {
+        try (Connection connection = new ConnectionFactory().getConnection();
+             PreparedStatement stmt = connection.prepareStatement(sqlPlaca.DELETE.getQuery())) {
+            stmt.setString(1, placa.getLetras().toUpperCase());
+                return stmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.out.println("Erro ao deletar placa!\n" + ex.getMessage());
+        }
         return -1;
     }
 
@@ -60,7 +75,7 @@ public class PlacaDAO implements GenericDAO<Placa> {
     public Placa findByID(int id) {
         try (Connection connection = new ConnectionFactory().getConnection();
              PreparedStatement stmt = connection.prepareStatement(sqlPlaca.FINDBYID.getQuery())) {
-            stmt.setInt(1,id);
+            stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -70,7 +85,7 @@ public class PlacaDAO implements GenericDAO<Placa> {
                 );
             }
         } catch (SQLException ex) {
-            System.out.println("Erro na consulta de placas!\n" + ex.getMessage());
+            System.out.println("Erro na consulta de placa por ID!\n" + ex.getMessage());
         }
         return null;
     }

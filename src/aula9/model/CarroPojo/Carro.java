@@ -10,7 +10,8 @@ public class Carro {
     private String modelo, montadora;
     private Placa placa;
 
-    public Carro(){}
+    public Carro() {
+    }
 
     public Carro(int ano, String modelo, String montadora, Placa placa) {
         this.ano = ano;
@@ -52,19 +53,27 @@ public class Carro {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return getModelo() + " - " + getMontadora() + " - " + getAno() + " - " + getPlaca();
     }
 
-    public List<Carro> listAll(){
+    public List<Carro> listAll() {
         return new CarroDAO().listAll();
     }
 
-    public void insert(Carro carro){
+    public void insert(Carro carro) {
         new CarroDAO().insert(carro);
     }
 
-    public Carro findById(int id){
+    public Carro findById(int id) {
         return new CarroDAO().findByID(id);
+    }
+
+    public int update(Carro carro) {
+        return new CarroDAO().update(carro);
+    }
+
+    public int delete(Carro carro) {
+        return new CarroDAO().delete(carro);
     }
 }
